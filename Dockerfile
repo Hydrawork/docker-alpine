@@ -11,9 +11,9 @@ ENV GLIBC_VERSION=2.23-r3 \
 # Replace apk
 RUN sed -i -e "s/dl-cdn.alpinelinux.org/$RESPOSITORY/g" /etc/apk/repositories && \
 	# Add glibc-2.23
-	apk add --update ca-certificates bash && \
+	apk add --update ca-certificates bash curl && \
     for pkg in glibc-${GLIBC_VERSION} glibc-bin-${GLIBC_VERSION} glibc-i18n-${GLIBC_VERSION}; \
-    	do wget https://github.com/sgerrand/alpine-pkg-glibc/releases/download/${GLIBC_VERSION}/${pkg}.apk -O /tmp/${pkg}.apk; \
+    	do curl -L -o /tmp/${pkg}.apk https://github.com/sgerrand/alpine-pkg-glibc/releases/download/${GLIBC_VERSION}/${pkg}.apk; \
     done && \
     apk add --allow-untrusted /tmp/*.apk && \
     rm -v /tmp/*.apk && \
