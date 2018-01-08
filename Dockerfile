@@ -21,9 +21,9 @@ RUN sed -i -e "s/dl-cdn.alpinelinux.org/$RESPOSITORY/g" /etc/apk/repositories &&
     echo "export LANG=C.UTF-8" > /etc/profile.d/locale.sh && \
     /usr/glibc-compat/sbin/ldconfig /lib /usr/glibc-compat/lib && \
     # Add Timezone
-    apk add tzdata \
-    && /bin/cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime \
-    && echo 'Asia/Shanghai' > /etc/timezone \
+    apk add tzdata && \
+    /bin/cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && \
+    echo 'Asia/Shanghai' > /etc/timezone && \
     # Clear cache and temp files
     apk del glibc-i18n && \
     rm -rf /tmp/* /var/cache/apk/*
