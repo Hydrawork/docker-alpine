@@ -1,11 +1,11 @@
-# AlpineLinux with a glibc-2.23
-FROM alpine:3.4
+# AlpineLinux 3.6 with a glibc-2.26
+FROM alpine:3.6
 
 MAINTAINER Alex Huang <alex@hydra.work>
 
 ARG RESPOSITORY=mirrors.aliyun.com
 
-ENV GLIBC_VERSION=2.23-r3 \
+ENV GLIBC_VERSION=2.26-r0 \
     LANG=C.UTF-8
 
 # Replace apk
