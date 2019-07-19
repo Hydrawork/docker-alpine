@@ -1,7 +1,7 @@
 # AlpineLinux with a glibc-2.23
-FROM alpine:3.4
+FROM alpine:3.9
 
-MAINTAINER Alex Huang <alex@hydra.work>
+MAINTAINER Hydrawork <alex@hydra.work>
 
 ARG RESPOSITORY=mirrors.aliyun.com
 
