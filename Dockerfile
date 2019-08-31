@@ -12,9 +12,10 @@ ARG LANG=C.UTF-8
 RUN set -ex && \
     sed -i -e "s/dl-cdn.alpinelinux.org/$RESPOSITORY/g" /etc/apk/repositories && \
     apk -U upgrade && \
+    apk add ca-certificates curl bash && \
 	# Add glibc
     if [ "${GLIBC_ENABLE}" = 'YES' ]; then \
-	apk add libstdc++ ca-certificates curl bash && \
+	apk add libstdc++ && \
     for pkg in glibc-${GLIBC_VERSION} glibc-bin-${GLIBC_VERSION} glibc-i18n-${GLIBC_VERSION}; \
     	do curl -L -o /tmp/${pkg}.apk ${GLIBC_REPO}/${GLIBC_VERSION}/${pkg}.apk; \
     done && \
