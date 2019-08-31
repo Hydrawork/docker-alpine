@@ -1,0 +1,12 @@
+#!/bin/bash
+
+# 加载配置文件
+while read line; do
+    eval "$line"
+done < build.conf
+
+docker build \
+    --build-arg ALPINE_VERSION=$ALPINE_VERSION \
+    --build-arg GLIBC_ENABLE=$GLIBC_ENABLE \
+    --build-arg GLIBC_VERSION=$GLIBC_VERSION \
+    -f $DOCKERFILE_PATH -t $IMAGE_NAME .
